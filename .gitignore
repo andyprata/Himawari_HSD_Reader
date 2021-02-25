@@ -3,4 +3,5 @@
 *.mod
 AHI
 Makefile
-
+# used to copy lib, inc and bin files to orac main repo
+ahi2orac.sh
