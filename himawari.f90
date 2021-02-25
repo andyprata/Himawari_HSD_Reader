@@ -36,7 +36,7 @@ module himawari
     real(kind=ahi_sreal),    parameter, public :: him_sreal_fill_value = -999.0
     real(kind=ahi_dreal),    parameter, public :: him_dreal_fill_value = -999.0
 
-    !V arious useful parameters for Himawari processing
+    ! Various useful parameters for Himawari processing
     integer(kind=ahi_sint), parameter, public  :: HIMAWARI_BOUNDS_FULL_DISK = 0
     integer(kind=ahi_sint), parameter, public  :: HIMAWARI_BOUNDS_ACTUAL_IMAGE= 1
     integer(kind=ahi_sint), parameter, public  :: HIMAWARI_BOUNDS_LINE_COLUMN = 2
