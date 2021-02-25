@@ -95,7 +95,6 @@ integer function AHI_Main_Read(filename, geofile, ahi_data2, &
 	ahi_main%convert=HIMAWARI_UNIT_RBT
 
 	if (verbose) then
-		write(*,*)"--- THIS IS A TEST ---"
 		write(*,*)"	-	Will process bands: ",ahi_main%inchans
 		write(*,*)"	-	Will read data for region: "
 		write(*,*)"			X: ",ahi_main%ahi_extent%x_min," to ", ahi_main%ahi_extent%x_max
@@ -114,6 +113,7 @@ integer function AHI_Main_Read(filename, geofile, ahi_data2, &
 		ahi_main%ahi_data = ahi_data2
 	endif
 
+	! Here is the call to process segments
 	retval	=	AHI_Setup_Read_Chans(ahi_main,verbose)
 	if (retval.ne.HIMAWARI_SUCCESS) then
 		status	=	HIMAWARI_FAILURE
@@ -334,8 +334,10 @@ integer function AHI_Setup_Read_Chans(ahi_main,verbose) result(status)
 	endif
 
 	bandpos	=	1
+	! These were hard coded to process the full disk
+	! Let's see what happens when we only process 3 segments
 	minseg	=	1
-	maxseg	=	10
+	maxseg	=	3!10
 
 	do i=1,HIMAWARI_NCHANS
 
