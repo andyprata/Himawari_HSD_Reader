@@ -95,6 +95,7 @@ integer function AHI_Main_Read(filename, geofile, ahi_data2, &
 	ahi_main%convert=HIMAWARI_UNIT_RBT
 
 	if (verbose) then
+		write(*,*)"--- THIS IS A TEST ---"
 		write(*,*)"	-	Will process bands: ",ahi_main%inchans
 		write(*,*)"	-	Will read data for region: "
 		write(*,*)"			X: ",ahi_main%ahi_extent%x_min," to ", ahi_main%ahi_extent%x_max
@@ -664,7 +665,7 @@ integer function AHI_resample_hres(indata, outdata,ahi_extent,xsize,ysize,verbos
 	sizerx	=	xsize / ahi_extent%x_size
 	sizery	=	ysize / ahi_extent%y_size
 
-#ifdef __PGI 
+#ifdef __PGI
 	if (verbose)write(*,*) 'Resampling VIS grid to IR grid using PGI threading'
 #else
 #ifdef _OPENMP
@@ -711,7 +712,7 @@ integer function AHI_resample_hres(indata, outdata,ahi_extent,xsize,ysize,verbos
 !$omp end parallel do
 #endif
 #ifdef __PGI
-!$acc end kernels 
+!$acc end kernels
 #endif
 	outdata	=	temparr
 	status	=	HIMAWARI_SUCCESS
