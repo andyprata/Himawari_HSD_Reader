@@ -411,6 +411,7 @@ integer function AHI_Setup_Read_Chans(ahi_main,verbose) result(status)
 				indvar	=	1
 			endif
 
+			! Here is where the segments get read in
 			do j=minseg,maxseg
 
 				if (ahi_main%ahi_extent%procseg(j) .eqv. .true.) then
