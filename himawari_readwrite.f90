@@ -196,17 +196,34 @@ integer function AHI_Retrieve_Predef_Geo(ahi_main,geofile,verbose) result(status
 	write(*,*)"countval(1) = ",countval(1)
 	write(*,*)"countval(2) = ",countval(2)
 
-  write(*,*)"--- geofile CHECK ---"
+  write(*,*)"--- nf90_open geofile CHECK ---"
 	call AHI_NCDF_check( nf90_open(geofile, NF90_NOWRITE, ncid) )
 	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_inq_varid Lat CHECK ---"
 	call AHI_NCDF_check( nf90_inq_varid(ncid, "Lat", varid) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_get_var lat CHECK ---"
 	call AHI_NCDF_check( nf90_get_var(ncid, varid, ahi_main%ahi_data%lat, start = start, count = countval) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_inq_varid Lon CHECK ---"
 	call AHI_NCDF_check( nf90_inq_varid(ncid, "Lon", varid) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_get_var lon CHECK ---"
 	call AHI_NCDF_check( nf90_get_var(ncid, varid, ahi_main%ahi_data%lon, start = start, count = countval) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_inq_varid VZA CHECK ---"
 	call AHI_NCDF_check( nf90_inq_varid(ncid, "VZA", varid) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_get_var vza CHECK ---"
 	call AHI_NCDF_check( nf90_get_var(ncid, varid, ahi_main%ahi_data%vza, start = start, count = countval) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_inq_varid VAA CHECK ---"
 	call AHI_NCDF_check( nf90_inq_varid(ncid, "VAA", varid) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- nf90_get_var vaa CHECK ---"
 	call AHI_NCDF_check( nf90_get_var(ncid, varid, ahi_main%ahi_data%vaa, start = start, count = countval) )
+	write(*,*)"--- DONE ---"
+	write(*,*)"--- ALL DONE ---"
 
 	status	=	HIMAWARI_SUCCESS
 
