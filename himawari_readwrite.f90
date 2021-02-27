@@ -191,7 +191,14 @@ integer function AHI_Retrieve_Predef_Geo(ahi_main,geofile,verbose) result(status
 	countval(1)	=	ahi_main%ahi_extent%x_max - ahi_main%ahi_extent%x_min + 1
 	countval(2)	=	ahi_main%ahi_extent%y_max - ahi_main%ahi_extent%y_min + 1
 
+	write(*,*)"start(1) = ",start(1)
+	write(*,*)"start(2) = ",start(2)
+	write(*,*)"countval(1) = ",countval(1)
+	write(*,*)"countval(2) = ",countval(2)
+
+  write(*,*)"--- geofile CHECK ---"
 	call AHI_NCDF_check( nf90_open(geofile, NF90_NOWRITE, ncid) )
+	write(*,*)"--- DONE ---"
 	call AHI_NCDF_check( nf90_inq_varid(ncid, "Lat", varid) )
 	call AHI_NCDF_check( nf90_get_var(ncid, varid, ahi_main%ahi_data%lat, start = start, count = countval) )
 	call AHI_NCDF_check( nf90_inq_varid(ncid, "Lon", varid) )
