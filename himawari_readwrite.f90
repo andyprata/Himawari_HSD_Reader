@@ -135,6 +135,8 @@ integer function AHI_Main_Read(filename, geofile, ahi_data2, &
 		else
 			if(verbose)write(*,*)"Retrieving lat/lon and satellite angles from file"
 			retval	=	AHI_Retrieve_Predef_Geo(ahi_main,geofile,verbose)
+			write(*,*)" --- FINISHED AHI_Retrieve_Predef_Geo ---"
+			write(*,*)"retval = ", retval
 			if (retval.ne.HIMAWARI_SUCCESS) then
 				status	=	HIMAWARI_FAILURE
 				return
