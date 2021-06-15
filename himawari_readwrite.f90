@@ -333,8 +333,10 @@ integer function AHI_Setup_Read_Chans(ahi_main,verbose) result(status)
 	endif
 
 	bandpos	=	1
+        ! These were hard coded to process the full disk
+	! Let's see what happens when we only process 3 segments
 	minseg	=	1
-	maxseg	=	10
+	maxseg	=	3!10
 
 	do i=1,HIMAWARI_NCHANS
 
